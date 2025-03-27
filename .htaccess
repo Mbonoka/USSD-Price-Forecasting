@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+# Allow direct access to files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route USSD requests to ussd_handler.php
+RewriteRule ^ussd/?$ ussd_handler.php [L]
+
+# Route API requests
+RewriteRule ^api/(.*)$ api/index.php [L]
